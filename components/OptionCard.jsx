@@ -120,7 +120,6 @@ function OptionCard() {
 
   return (
     <>
-      {console.log(formField)}
       {/* step 1 */}
       {step === 1 && (
         <div className="flex flex-col bg-white rounded-xl p-10">
@@ -586,7 +585,6 @@ function OptionCard() {
               </span>
             </button>
           </div>
-          {console.log(formField)}
         </div>
       )}
     </>

@@ -29,7 +29,7 @@ function page() {
           .select()
           .eq("user_id", user.id)
           .order("created_at", { ascending: false });
-        console.log(data);
+
         if (error) {
           console.log(error);
           return;
@@ -111,7 +111,7 @@ function page() {
               const selected = plan.find(
                 (item) => item.created_at === e.target.value
               );
-              console.log(selected);
+
               setDisplayPlan(selected);
             }}
           >
@@ -166,7 +166,6 @@ function page() {
             <button
               onClick={() => {
                 downloadFullPlanPDF(displayPlan.plan);
-                console.log(displayPlan.plan);
               }}
               className="bg-white p-3 h-fit w-fit font-semibold  rounded-full  "
             >
@@ -190,12 +189,15 @@ function page() {
 
       {state === "workout" && (
         <div className="grid grid-cols-3 gap-3">
-          {displayPlan?.plan?.workout_plan.map((workout) => (
-            <div className="bg-white/50 p-8 h-full w-full rounded-xl shadow-sm border border-dashed border-gray-400  backdrop-blur-lg">
+          {displayPlan?.plan?.workout_plan.map((workout, index) => (
+            <div
+              key={index}
+              className="bg-white/50 p-8 h-full w-full rounded-xl shadow-sm border border-dashed border-gray-400  backdrop-blur-lg"
+            >
               <h1 className="text-3xl leading-7 font-bold">{`${workout.day}`}</h1>
               <span className=" text-gray-500 mb-5">{`${workout.focus}`} </span>
               {workout.exercises.map((ex) => (
-                <div className="flex flex-col">
+                <div key={ex} className="flex flex-col">
                   <span className="text-lg font-semibold">
                     --{`${ex.name}`}
                   </span>

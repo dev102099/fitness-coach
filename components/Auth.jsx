@@ -41,7 +41,6 @@ function Auth({ show, setShow, setIsLoggedIn }) {
           alert(error.message);
           setLoading(false);
         } else {
-          console.log("Signed up:", data);
           setLoading(false);
         }
       }
@@ -115,7 +114,7 @@ function Auth({ show, setShow, setIsLoggedIn }) {
               placeholder="Enter Your Password"
               className="p-3 border border-gray-400 rounded-lg"
             />
-            {console.log(formData)}
+
             <button
               ref={buttonRef}
               onMouseEnter={handleButtonEnter}

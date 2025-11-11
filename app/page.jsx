@@ -1,7 +1,6 @@
 "use client";
 
 import Auth from "@/components/Auth";
-import { speak } from "@/utils/deepgram";
 import { supabase } from "@/utils/supabase/client";
 import gsap from "gsap";
 import { redirect } from "next/navigation";
@@ -30,16 +29,6 @@ function page() {
     };
     fetchUser();
   }, []);
-
-  const user = async () => {
-    const {
-      data: { user },
-      error: userError,
-    } = await supabase.auth.getUser();
-    if (!userError) {
-      return data;
-    }
-  };
 
   const handleSignOut = async () => {
     try {

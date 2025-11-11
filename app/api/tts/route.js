@@ -9,7 +9,7 @@ export async function POST(req) {
     { text },
     {
       model: "aura-2-thalia-en",
-      encoding: "mp3", // use encoding directly
+      encoding: "mp3",
     }
   );
 
