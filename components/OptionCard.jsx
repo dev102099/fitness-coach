@@ -10,7 +10,7 @@ function OptionCard() {
   const [step, setStep] = useState(1);
   const [width, setWidth] = useState(20);
   const [selected, setSelected] = useState("");
-  const [loadingState, setLoading] = useState("");
+  const [loadingState, setLoading] = useState(false);
 
   const loading = () => {
     const loadingP = (step / 5) * 100;
@@ -104,7 +104,7 @@ function OptionCard() {
         return;
       }
       const cleaned = safeJsonParse(data.message);
-      savePlan(cleaned);
+      await savePlan(cleaned);
       setLoading(false);
       router.push("/plan");
     } catch (error) {
@@ -578,7 +578,12 @@ function OptionCard() {
             )}
             <button
               onClick={handleSubmit}
-              className="p-3 bg-gradient-to-r w-[30%] from-green-500 to-green-600 rounded-lg"
+              disabled={loadingState}
+              className={`p-3 w-[30%] rounded-lg ${
+                loadingState
+                  ? "bg-gray-400 cursor-not-allowed"
+                  : "bg-gradient-to-r from-green-500 to-green-600"
+              }`}
             >
               <span className="text-lg font-semibold text-white">
                 {loadingState ? <GradientSpinner /> : "Submit"}
