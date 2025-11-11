@@ -12,8 +12,6 @@ export default function Page() {
         error,
       } = await supabase.auth.getUser();
 
-      console.log("USER:", user);
-
       if (!user) {
         redirect("/");
       }
