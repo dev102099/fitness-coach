@@ -54,7 +54,7 @@ function page() {
           },
           body: JSON.stringify({
             prompt:
-              "convert the provided into readable para explaining things dont include any characters other than alphabets." +
+              "convert the provided into readable para explaining things dont include any characters other than alphabets.keep it under 1500 characters" +
               `${speakableData}`,
           }),
         });
@@ -74,7 +74,7 @@ function page() {
           },
           body: JSON.stringify({
             prompt:
-              "convert the provided into readable para explaining things dont include any characters other than alphabets." +
+              "convert the provided into readable para explaining things dont include any characters other than alphabets.keep it under 1500 characters" +
               `${speakableData}`,
           }),
         });

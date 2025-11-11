@@ -19,7 +19,7 @@ export async function POST(request) {
       gender,
     } = await request.json();
     const res = await ai.models.generateContent({
-      model: "gemini-2.0-flash-lite",
+      model: "gemini-2.0-flash",
       contents: `
       You will be given some information about a user and based on that you will have to generate a full workout plan, diet plan, and tips for that user according to the data provided.
       The response must be in valid JSON format only (no markdown, no explanations).
