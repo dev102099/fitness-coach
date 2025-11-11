@@ -118,9 +118,14 @@ function page() {
             <option selected disabled>
               History
             </option>
-            {plan.map((date) => {
+            {plan.map((date, index) => {
               const dateNew = new Date(date?.created_at);
-              return <option value={date.created_at}>{`${dateNew}`}</option>;
+              return (
+                <option
+                  key={index}
+                  value={date.created_at}
+                >{`${dateNew}`}</option>
+              );
             })}
           </select>
         </div>
@@ -196,8 +201,8 @@ function page() {
             >
               <h1 className="text-3xl leading-7 font-bold">{`${workout.day}`}</h1>
               <span className=" text-gray-500 mb-5">{`${workout.focus}`} </span>
-              {workout.exercises.map((ex) => (
-                <div key={ex} className="flex flex-col">
+              {workout.exercises.map((ex, index) => (
+                <div key={index} className="flex flex-col">
                   <span className="text-lg font-semibold">
                     --{`${ex.name}`}
                   </span>

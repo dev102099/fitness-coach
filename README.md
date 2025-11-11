@@ -1,100 +1,84 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+AI Fitness Coach
 
-## Getting Started
+Your personal AI-powered fitness companion — generating customized workout and diet plans based on your body profile, goals, and preferences.
 
-First, run the development server:
+🚀 Overview
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+AI Fitness Coach is a Next.js-based web app that intelligently crafts personalized fitness plans — including workouts, diets, and wellness tips — using cutting-edge AI models.
+It combines powerful LLM reasoning (Gemini) with smooth front-end animations (GSAP) and real-time text-to-speech (Deepgram) for a truly interactive experience.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+🧠 Features
+🧍 Personalized User Input
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+Users can provide:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Basic Info: Name, Age, Gender
 
-## Learn More
+Body Stats: Height, Weight
 
-To learn more about Next.js, take a look at the following resources:
+Fitness Goal: Weight Loss, Muscle Gain, Endurance, etc.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Fitness Level: Beginner / Intermediate / Advanced
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Workout Location: Home / Gym / Outdoor
 
-## Deploy on Vercel
+Dietary Preference: Veg / Non-Veg / Vegan / Keto
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+(Optional) Medical history, stress levels, lifestyle notes
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+⚙️ AI-Powered Plan Generation
 
-{/_ workout _/}
+Using the Gemini API, the app generates:
 
-      {state === "workout" && (
-        <div className="grid grid-cols-3 gap-3">
-          {plan[0].plan.workout_plan.map((workout) => (
-            <div className="bg-white/50 p-8 h-full w-full rounded-xl shadow-sm border border-dashed border-gray-400  backdrop-blur-lg">
-              <h1 className="text-3xl leading-7 font-bold">{`${workout.day}`}</h1>
-              <span className=" text-gray-500 mb-5">{`${workout.focus}`} </span>
-              {workout.exercises.map((ex) => (
-                <div className="flex flex-col">
-                  <span className="text-lg font-semibold">
-                    --{`${ex.name}`}
-                  </span>
-                  <span className="text-sm mb-3 leading-3 text-gray-500">
-                    sets: {`${ex.sets}`} & reps: {`${ex.reps}`}
-                  </span>
-                </div>
-              ))}
-            </div>
-          ))}
-        </div>
-      )}
+🏋️ Workout Plan — Daily routines with exercises, sets, reps & rest intervals
 
-      {/* diet */}
-      {state === "diet" && plan != null && (
-        <div className="grid gap-5 grid-cols-2 h-full w-full">
-          {plan[0].plan.diet_plan.map((diet, index) => (
-            <div
-              key={index}
-              className="flex p-4 rounded-xl border h-fit w-full border-dashed border-gray-400 flex-col  bg-gradient-to-r from-[#e1eec3] to-[#f05053]"
-            >
-              <h1 className="font-bold  text-2xl">{`${diet.meal_time}`}</h1>
-              {diet.food_item.map((items, index) => (
-                <span key={index} className="ml-5 text-sm">
-                  -- {`${items}`}
-                </span>
-              ))}
+🥗 Diet Plan — Meals for breakfast, lunch, dinner, and snacks
 
-              <div className="bg-yellow-50/50 mt-5 p-3 flex flex-col justify-center items-center rounded-xl backdrop-blur-xl">
-                <h2 className="font-semibold">Benefits/Purpose</h2>
-                <span className="text-sm">{`${diet["purpose/benefits"]}`}</span>
-              </div>
-            </div>
-          ))}
-        </div>
-      )}
+💬 AI Tips & Motivation — Custom advice, form corrections, and motivational insights
 
-      {/* tips */}
-      {state === "tips" && (
-        <div className="flex flex-col gap-4 justify-center items-center">
-          <h1 className="font-bold text-4xl">Tips</h1>
-          {plan[0].plan.tips.map((tip) => (
-            <div
-              key={tip}
-              className="bg-gradient-to-r hover:animate-pulse  shadow-lg border border-gray-400 from-[#bdf4ff] to-[#1c92d2] w-fit rounded-xl"
-            >
-              <div className="bg-white/20 backdrop-blur-3xl  p-5 rounded-xl">
-                <span className="text-sm font-semibold">"{`${tip}`}"</span>
-              </div>
-            </div>
-          ))}
-        </div>
-      )}
+🔊 Voice Interaction
+
+Read My Plan: Listen to your AI-generated workout and diet using Deepgram TTS
+
+Section-based Playback: Choose to hear only your Workout or Diet section
+
+📦 Extra Features
+
+📄 Export Plan as PDF
+
+💾 Save your plan in Supabase
+
+🌗 Dark / Light mode toggle (coming soon)
+
+🔁 Regenerate plan anytime (coming soon)
+
+⚡ Smooth animations using GSAP / Framer Motion
+
+🧩 Tech Stack
+Layer Tech Used
+Frontend Next.js 14
+, React.js
+, TailwindCSS
+, GSAP
+
+Backend / API Node.js, Next.js API Routes
+Database Supabase
+for user and plan storage
+AI & TTS Gemini
+for content generation, Deepgram
+for speech synthesis
+Animations GSAP for UI transitions
+Auth Supabase Auth
+🧭 Workflow
+
+User Inputs personal and fitness details
+
+AI Engine (Gemini) processes input → returns structured JSON (Workout + Diet + Tips)
+
+Frontend parses JSON → displays in a card-based step UI
+
+GSAP animates transitions between cards
+
+User can listen to plan sections via Deepgram TTS
+
+Save / Export / Regenerate as needed
